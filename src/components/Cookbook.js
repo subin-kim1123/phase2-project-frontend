@@ -1,14 +1,11 @@
-import React from 'react'
-import Header from './Header'
-import Recipe from './Recipe'
+import React, { Component } from 'react'
 import RecipeForm from './RecipeForm'
+import Recipe from './Recipe'
+import Header from './Header'
 
+export default class cookbook extends Component {
 
-export default class Cookbook extends React.Component{
-  state={
-    cook : []
-  }
- // componentDidMount(){
+// componentDidMount(){
  //    fetch("http://localhost:3001/recipes")
  //    .then(res=>res.json())
  //    .then(recipesArr=>{
@@ -17,13 +14,14 @@ export default class Cookbook extends React.Component{
  //      })
  //    })
  //  }
-  render(){
-    return(
-    <div>
-    <Header />
-    <Recipe />
-    <RecipeForm />
-    <div/>
 
-    )
-  }
+    render() {
+        return (
+            <div>
+                <RecipeForm/>
+                <Header/>
+                <Recipe/>
+            </div>
+        )
+    }
+}
