@@ -13,17 +13,19 @@ export default class cookbook extends Component {
  //    .then(res=>res.json())
  //    .then(recipesArr=>{
  //      this.setState({
- //        pokemon: pokemonArr
+ //        recipes: recipesArr
  //      })
  //    })
  //  }
 
     render() {
+        let theArrayOfRecipes = this.state.recipes
+        
         return (
             <div>
-                <RecipeForm/>
+                <RecipeForm />
                 <Header/>
-                <Recipe/>
+                <Recipe recipes={theArrayOfRecipes}/>
             </div>
         )
     }
