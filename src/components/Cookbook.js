@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import RecipeForm from './RecipeForm'
-import Recipe from './Recipe'
+import RecipesContainer from './Recipe'
 import Header from './Header'
 
 export default class cookbook extends Component {
@@ -25,7 +25,7 @@ export default class cookbook extends Component {
             <div>
                 <RecipeForm />
                 <Header/>
-                <Recipe recipes={theArrayOfRecipes}/>
+                <RecipesContainer recipes={theArrayOfRecipes}/>
             </div>
         )
     }
