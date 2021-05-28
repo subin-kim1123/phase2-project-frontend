@@ -4,6 +4,9 @@ import Recipe from './Recipe'
 import Header from './Header'
 
 export default class cookbook extends Component {
+    state={
+        recipes: []
+    }
 
 // componentDidMount(){
  //    fetch("http://localhost:3001/recipes")
