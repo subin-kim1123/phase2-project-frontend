@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import RecipeForm from './RecipeForm'
-import Recipe from './Recipe'
+import RecipesContainer from './Recipe'
 import Header from './Header'
 
 export default class cookbook extends Component {
@@ -40,43 +40,13 @@ componentDidMount(){
         
         console.log(this.state)
 
-        // const unirest = require("unirest");
-
-        // const req = unirest("GET", "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random");
+        let theArrayOfRecipes = this.state.recipes
         
-        // req.query({
-        //     "number": "10"
-        // });
-        // req.headers({
-        //     "x-rapidapi-key": "602673fc04mshc0c965081b623ddp1b0ef4jsn4c5bcbd73d3d",
-        //     "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-        //     "useQueryString": true
-        // });
-        // req.end(function (res) {
-        //     if (res.error) throw new Error(res.error);
-        //     console.log(res.body);
-        // });
-
-        // const unirest = require('unirest')
-
-        // const API_KEY = "602673fc04mshc0c965081b623ddp1b0ef4jsn4c5bcbd73d3d"
-
-        // let requestString = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random"
-
-        // unirest.get(requestString)
-        // .header("X-RapidAPI-Key", API_KEY)
-        // .end(function(result) {
-        //     if (result.status === 200) {
-        //         console.log(result.body)
-        //     }
-        // })
-    
         return (
             <div>
-                {this.getRecipeData}
-                <RecipeForm/>
+                <RecipeForm />
                 <Header/>
-                <Recipe/>
+                <RecipesContainer recipes={theArrayOfRecipes}/>
             </div>
         )
     }
