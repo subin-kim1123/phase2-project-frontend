@@ -6,7 +6,7 @@ export default class RecipeForm extends Component {
         
         return (
             <div>
-                {arrOfComponents}
+             
             </div>
         )
     }

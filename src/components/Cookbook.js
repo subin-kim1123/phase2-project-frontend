@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
 import RecipeForm from './RecipeForm'
-import RecipesContainer from './Recipe'
+import RecipesContainer from './RecipesContainer'
 import Header from './Header'
 
-export default class cookbook extends Component {
+export default class Cookbook extends Component {
     state={
         recipes: []
     }
 
 componentDidMount(){
-   const API_KEY = ''
-    fetch(`https://api.spoonacular.com/recipes/random?apiKey=${API_KEY}&number=10`)
+   
+    fetch("http://localhost:3000/recipes")
     .then((response)=> response.json())
     .then((data)=> {
         this.setState({
