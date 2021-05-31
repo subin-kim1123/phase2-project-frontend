@@ -5,7 +5,8 @@ import Header from './Header'
 
 export default class cookbook extends Component {
     state={
-        recipes: []
+        recipes: [],
+        searchBar: ''
     }
 
 componentDidMount(){
@@ -31,19 +32,37 @@ componentDidMount(){
         })
     }
 
+    handleChange = (event) => {
+        this.setState({
+          searchBar: event
+        })
+      }
+
     render() {
         console.log(this.state)
 
         let theArrayOfRecipes = this.state.recipes
+
+        let filterRecipes = this.state.recipes.filter(recipeObj => {
+            return (recipeObj.name.toLowerCase().includes(this.state.searchBar))
+          })
         
         return (
             <div>
-                <RecipeForm />
                 <Header/>
+                <br />
+                <RecipeForm />
+                <br />
                 <RecipesContainer 
                 recipes={theArrayOfRecipes}
                 deleteRecipe={this.deleteRecipe}
+                filterRecipes={filterRecipes}
                 />
+                <br />
+                <Search 
+                handleChange={this.handleChange}
+                searchBar={this.state.searchBar}/>
+        
             </div>
         )
     }
