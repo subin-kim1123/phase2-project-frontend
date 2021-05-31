@@ -10,10 +10,7 @@ export default class cookbook extends Component {
         searchBar: ''
     }
 
-componentDidMount(){
-
-
-        
+componentDidMount(){ 
     fetch(`http://localhost:3000/recipes`)
     .then((response)=> response.json())
     .then((data)=> {
