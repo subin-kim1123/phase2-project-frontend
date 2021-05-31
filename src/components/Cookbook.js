@@ -22,7 +22,7 @@ export default class cookbook extends Component {
  
 
 componentDidMount(){
-   const API_KEY = ''
+   const API_KEY = 'c1f88f801b7843d3b41f2f0df1cd4538'
     fetch(`https://api.spoonacular.com/recipes/random?apiKey=${API_KEY}&number=10`)
     .then((response)=> response.json())
     .then((data)=> {
@@ -34,11 +34,17 @@ componentDidMount(){
         console.log("error")
     })
 }
-  
+
+
+
+
+
 
     render() {
-        
-        console.log(this.state)
+
+    
+        console.log(this.state.recipes)
+
 
         let theArrayOfRecipes = this.state.recipes
         

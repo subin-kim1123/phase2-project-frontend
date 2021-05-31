@@ -4,7 +4,7 @@ export default class Recipe extends React.Component{
     render(){
       return(
       <div>
-        <div className="recipe">
+        {/* <div className="recipe">
               <img className="recipe_image" src={} alt={}/>
               <div className="recipe_content">
                     <h2 className="dish_name">{}</h2>
@@ -24,7 +24,7 @@ export default class Recipe extends React.Component{
               <br/>
                     <button>Edit</button>
                     <button>Delete</button>
-        </div>
+        </div> */}
       </div>
       )
     }
