@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import RecipeForm from './RecipeForm'
-import RecipesContainer from './Recipe'
+import RecipesContainer from './RecipesContainer'
 import Header from './Header'
+import Search from './Search'
 
 export default class cookbook extends Component {
     state={
@@ -10,14 +11,15 @@ export default class cookbook extends Component {
     }
 
 componentDidMount(){
-   const API_KEY = 
-    fetch(`https://api.spoonacular.com/recipes/random?apiKey=${API_KEY}&number=10`)
+
+
+        
+    fetch(`http://localhost:3000/recipes`)
     .then((response)=> response.json())
     .then((data)=> {
         this.setState({
-            recipes: data
+            recipes: data}) 
         })
-    })
     .catch(()=>{
         console.log("error")
     })
@@ -41,10 +43,8 @@ componentDidMount(){
     render() {
         console.log(this.state)
 
-        let theArrayOfRecipes = this.state.recipes
-
         let filterRecipes = this.state.recipes.filter(recipeObj => {
-            return (recipeObj.name.toLowerCase().includes(this.state.searchBar))
+            return (recipeObj.title.toLowerCase().includes(this.state.searchBar))
           })
         
         return (
@@ -54,7 +54,7 @@ componentDidMount(){
                 <RecipeForm />
                 <br />
                 <RecipesContainer 
-                recipes={theArrayOfRecipes}
+                recipes={this.state.recipes}
                 deleteRecipe={this.deleteRecipe}
                 filterRecipes={filterRecipes}
                 />
