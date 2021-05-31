@@ -1,9 +1,28 @@
 import React, { Component } from 'react'
 
 export default class Recipe extends React.Component{
+
+  delRecipe = (e) => {
+    fetch(`https://api.spoonacular.com/recipes/random?apiKey=${API_KEY}&number=10`, {
+      method: "DELETE",
+      headers: {
+        "content-type" : "application/json"
+      },
+      body: JSON.stringify(this.props.deleteRecipe)
+    })  
+    .then(res=>res.json())
+    .then(data=>{
+      this.props.deleteRecipe(data)  
+    })
+  }
+  
     render(){
       return(
       <div>
+        </div>
+      )
+    }
+  }
         {/* <div className="recipe">
               <img className="recipe_image" src={} alt={}/>
               <div className="recipe_content">
@@ -23,9 +42,9 @@ export default class Recipe extends React.Component{
               </div>
               <br/>
                     <button>Edit</button>
-                    <button>Delete</button>
-        </div> */}
-      </div>
+                    <button onClick={this.delRecipe}>Delete</button>
+        </div>
+      
       )
     }
-  }
+  }*/}

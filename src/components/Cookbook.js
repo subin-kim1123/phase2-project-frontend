@@ -8,21 +8,8 @@ export default class cookbook extends Component {
         recipes: []
     }
 
-   
-
-// componentDidMount(){
-//     fetch()
-//     .then(res=>res.json())
-//     .then(recipesArr=>{
-//       this.setState({
-//         pokemon: recipesArr
-//       })
-//     })
-
- 
-
 componentDidMount(){
-   const API_KEY = 'c1f88f801b7843d3b41f2f0df1cd4538'
+   const API_KEY = 
     fetch(`https://api.spoonacular.com/recipes/random?apiKey=${API_KEY}&number=10`)
     .then((response)=> response.json())
     .then((data)=> {
@@ -34,17 +21,18 @@ componentDidMount(){
         console.log("error")
     })
 }
-
-
-
-
-
+  
+    deleteRecipe = (deleteID) => {
+        let newArr = this.state.recipes.filter(recipeObj => {
+            return recipeObj.id !== deleteID
+        })
+        this.setState({
+            recipes: newArr
+        })
+    }
 
     render() {
-
-    
-        console.log(this.state.recipes)
-
+        console.log(this.state)
 
         let theArrayOfRecipes = this.state.recipes
         
@@ -52,7 +40,10 @@ componentDidMount(){
             <div>
                 <RecipeForm />
                 <Header/>
-                <RecipesContainer recipes={theArrayOfRecipes}/>
+                <RecipesContainer 
+                recipes={theArrayOfRecipes}
+                deleteRecipe={this.deleteRecipe}
+                />
             </div>
         )
     }
