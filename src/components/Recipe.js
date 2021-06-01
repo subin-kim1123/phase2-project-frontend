@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Container } from 'semantic-ui-react'
+import { Container, Button } from 'semantic-ui-react'
+import 'semantic-ui-css/semantic.min.css'
 
 export default class Recipe extends React.Component{
 
@@ -40,8 +41,9 @@ export default class Recipe extends React.Component{
                     <p className="source">{source}</p>
               </div>
               <br/>
-                    <button>Edit</button>
-                    <button onClick={this.delRecipe}>Delete</button>
+                
+                    <Button color='olive'>Edit</Button>
+                    <Button color='black' onClick={this.delRecipe}>Delete</Button>
         </div>
         </Container>
       )
