@@ -37,6 +37,13 @@ componentDidMount(){
         })
       }
 
+      addRecipeToState = (newRecipe) => {
+        let copyOfRecipeArr = [...this.state.recipes, newRecipe]
+        this.setState({
+          recipes: copyOfRecipeArr
+        })​
+    }
+
     render() {
         console.log(this.state)
 
@@ -52,7 +59,8 @@ componentDidMount(){
                 <Search 
                 handleChange={this.handleChange}
                 searchBar={this.state.searchBar}/>
-                <RecipeForm />
+                <RecipeForm 
+                addRecipeToState={this.addRecipeToState}/>
                 <br />
                 <RecipesContainer 
                 recipes={this.state.recipes}
