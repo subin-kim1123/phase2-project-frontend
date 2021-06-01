@@ -17,6 +17,8 @@ export default class Recipe extends React.Component{
     })
   }
 
+
+  
   delRecipe = (e) => {
     let id = this.props.recipeObj.id
     fetch(`http://localhost:3000/recipes/${id}`, {
@@ -29,9 +31,6 @@ export default class Recipe extends React.Component{
   }
   
     render(){
-      console.log(this.props.recipeObj)
-
-      
       if (this.state.flipped) {
       return(
         
