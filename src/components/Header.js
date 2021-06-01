@@ -5,8 +5,8 @@ export default class Header extends React.Component{
 
    
   addRandomRecipe = (event) => {
-    const API_KEY = 'c1f88f801b7843d3b41f2f0df1cd4538'
-    const formattedObj = 
+    const API_KEY = 
+ 
   fetch(`https://api.spoonacular.com/recipes/random?apiKey=${API_KEY}&number=1`)
   .then((r) => r.json())
   .then((recipeObj) => this.props.addRecipeToState({
