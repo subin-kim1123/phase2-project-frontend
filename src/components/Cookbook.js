@@ -3,11 +3,14 @@ import RecipeForm from './RecipeForm'
 import RecipesContainer from './RecipesContainer'
 import Header from './Header'
 import Search from './Search'
+import { Button } from 'semantic-ui-react'
+// import Modal from './Modal.js'
 
 export default class cookbook extends Component {
     state={
         recipes: [],
-        searchBar: ''
+        searchBar: '',
+        formView : false,
     }
 
 componentDidMount(){ 
@@ -21,6 +24,10 @@ componentDidMount(){
         console.log("error")
     })
 }
+
+    toggleForm = () => {
+        this.setState({formView : !this.state.formView})
+    }
   
     deleteRecipe = (deleteID) => {
         let newArr = this.state.recipes.filter(recipeObj => {
@@ -39,8 +46,9 @@ componentDidMount(){
 
 
     addRecipeToState = (newRecipe) => {
+        let newRecipesArr = [...this.state.recipes, newRecipe]
         this.setState({
-            recipes: [...this.state.recipes, newRecipe]
+            recipes: newRecipesArr
         })
     }
 
@@ -59,9 +67,14 @@ componentDidMount(){
                 <Search 
                 handleChange={this.handleChange}
                 searchBar={this.state.searchBar}/>
-                <RecipeForm 
-                addRecipeToState={this.addRecipeToState}/>
                 <br />
+
+                <Button primary onClick={this.toggleForm}>Add your own recipe!</Button>
+                
+                {this.state.formView ? <RecipeForm 
+                addRecipeToState={this.addRecipeToState}/>  : null }
+                <br />
+
                 <RecipesContainer 
                 recipes={this.state.recipes}
                 deleteRecipe={this.deleteRecipe}
