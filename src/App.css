@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+.CardFront {
+  font-family: Calibri, sans-serif
+}
+
+.CardBack {
+  font-family: Calibri, sans-serif
+}
