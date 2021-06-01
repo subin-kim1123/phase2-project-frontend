@@ -53,7 +53,8 @@ componentDidMount(){
         
         return (
             <div>
-                <Header/>
+                <Header
+                addRecipeToState={this.addRecipeToState}/>
                 <br />
                 Search Recipes:
                 <Search 

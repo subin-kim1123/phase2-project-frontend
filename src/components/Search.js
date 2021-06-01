@@ -21,8 +21,6 @@ const Search = props => {
   )
 }
 
-//    const API_KEY = 
-///search for new recipe:
-//https://api.spoonacular.com/recipes/random?apiKey=${API_KEY}&number=10
+
 
 export default Search

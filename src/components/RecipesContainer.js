@@ -10,12 +10,9 @@ export default class RecipesContainer extends Component {
             return <Recipe key={recipeObj.id} recipeObj={recipeObj} deleteRecipe={this.props.deleteRecipe}/>
         })
         return (
-            <Card.Group itemsPerRow={6}>
-            <h1>Hello from my recipes </h1>
+            <Card.Group itemsPerRow={4}>
                 {arrOfComponents}
-            
-       
-        </Card.Group>
+            </Card.Group>
          )
     
 }
