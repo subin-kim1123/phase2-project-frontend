@@ -1,15 +1,12 @@
 import React, { Component } from 'react'
+import { Container } from 'semantic-ui-react'
 
 export default class Recipe extends React.Component{
 
   delRecipe = (e) => {
-    let id = 6
+    let id = this.props.recipeObj.id
     fetch(`http://localhost:3000/recipes/${id}`, {
       method: "DELETE",
-      headers: {
-        "content-type" : "application/json"
-      },
-      body: JSON.stringify(this.props.deleteRecipe)
     })  
     .then(res=>res.json())
     .then(data=>{
@@ -23,7 +20,7 @@ export default class Recipe extends React.Component{
       let { title, readyIn, servings, calories, ingredients, steps, image, blog, winePairing, source} = this.props.recipeObj
       return(
 
-    
+        <Container>
         <div className="recipe">
               <img className="recipe_image" src={image} alt={title}/>
               <div className="recipe_content"> 
@@ -46,7 +43,7 @@ export default class Recipe extends React.Component{
                     <button>Edit</button>
                     <button onClick={this.delRecipe}>Delete</button>
         </div>
-      
+        </Container>
       )
     }
   }
