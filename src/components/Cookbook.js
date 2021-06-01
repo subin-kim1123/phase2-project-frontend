@@ -37,11 +37,11 @@ componentDidMount(){
         })
       }
 
-      addRecipeToState = (newRecipe) => {
-        let copyOfRecipeArr = [...this.state.recipes, newRecipe]
+
+    addRecipeToState = (newRecipe) => {
         this.setState({
-          recipes: copyOfRecipeArr
-        })​
+            recipes: [...this.state.recipes, newRecipe]
+        })
     }
 
     render() {

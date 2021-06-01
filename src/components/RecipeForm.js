@@ -3,15 +3,15 @@ import { Form } from 'semantic-ui-react'
 export default class RecipeForm extends Component {
     state={
         title : "",
-        ready_in : "",
+        readyIn : "",
+        servings: "",
         calories : "",
-        Ingredients : "",
-        steps: "",
-        Image1 : "",
-        Image2 : "",
-        Blog : "",
-        wine_pairing : "",
-        Source : ""
+        ingredients : [],
+        steps: [],
+        image : "",
+        blog : "",
+        winePairing : "",
+        source : ""
     }
     handleChange = (e) =>{
         this.setState({
@@ -22,14 +22,14 @@ export default class RecipeForm extends Component {
         e.preventDefault()
         let newFormattedObj ={
             title : this.state.title,
-            ready_in : this.state.ready_in,
+            readyIn : this.state.readyIn,
             calories: this.state.calories,
-            Ingredients: this.state.Ingredients.split(', '),
+            ingredients: this.state.ingredients.split(', '),
             steps : this.state.steps.split(', '),
-            Images : [this.state.Image1, this.state.Image2],
-            Blog : this.state.Blog,
-            wine_pairing : this.state.wine_pairing,
-            Source : this.state.Source
+            image : [this.state.image],
+            blog : this.state.blog,
+            winePairing : this.state.winePairing,
+            source : this.state.Source
         }
         fetch("http://localhost:3000/recipes", {
                 method: "POST",
@@ -40,21 +40,23 @@ export default class RecipeForm extends Component {
             })
             .then((res) => res.json())
             .then((postedRecipeObj) => {
-                this.props.addRecipeToState(postedRecipeObj)
-                this.setState({
-                    title : "",
-                    Recipe : "",
-                    calories : "",
-                    Ingredients : "",
-                    steps: "",
-                    Image1 : "",
-                    Image2 : "",
-                    Blog : "",
-                    wine_pairing : "",
-                    Source : ""
-                })
+            this.props.addRecipeToState(postedRecipeObj)
+                // this.setState({
+                //     title : "",
+                //     readyIn : "",
+                //     servings: "",
+                //     calories : "",
+                //     ingredients : [],
+                //     steps: [],
+                //     image : "",
+                //     blog : "",
+                //     winePairing : "",
+                //     source : ""
+                // })
             });
     }
+
+    
     render() {   
         console.log(this.state)     
         return (
@@ -62,15 +64,14 @@ export default class RecipeForm extends Component {
                 <Form onSubmit = {this.handleSubmit}>
                     <Form.Group widths="equal">
                     <Form.Input fluid label="title" placeholder="title" name="title" onChange={this.handleChange} value={this.state.title}/>
-                    <Form.Input fluid label="ready_in" placeholder="ready_in" name="ready_in" onChange={this.handleChange} value={this.state.ready_in} />
+                    <Form.Input fluid label="readyIn" placeholder="readyIn" name="readyIn" onChange={this.handleChange} value={this.state.readyIn} />
                     <Form.Input fluid label="calories" placeholder="calories" name="calories" onChange={this.handleChange} value={this.state.calories} />
-                    <Form.Input fluid label="Ingredients" placeholder="Ingredients (separate with commas)" name="Ingredients" onChange={this.handleChange} value={this.state.Ingredients} />
+                    <Form.Input fluid label="ingredients" placeholder="ingredients (separate with commas)" name="ingredients" onChange={this.handleChange} value={this.state.ingredients} />
                     <Form.Input fluid label="steps" placeholder="steps (separate with commas)" name="steps" onChange={this.handleChange} value={this.state.steps} />
-                    <Form.Input fluid label="Image1" placeholder="url" name="Image1" onChange={this.handleChange} value={this.state.Image1} />
-                    <Form.Input fluid label="Image2" placeholder="url" name="Image2" onChange={this.handleChange} value={this.state.Image2} />
-                    <Form.Input fluid label="Blog" placeholder="Comment" name="Blog" onChange={this.handleChange} value={this.state.Blog} />
-                    <Form.Input fluid label="wine_pairing" placeholder="wine pairing" name="wine_pairing" onChange={this.handleChange} value={this.state.wine_pairing} />
-                    <Form.Input fluid label="Source" placeholder="url" name="Source" onChange={this.handleChange} value={this.state.Source}/>
+                    <Form.Input fluid label="image" placeholder="url" name="image" onChange={this.handleChange} value={this.state.image} />
+                    <Form.Input fluid label="blog" placeholder="comment" name="blog" onChange={this.handleChange} value={this.state.blog} />
+                    <Form.Input fluid label="winePairing" placeholder="winePairing" name="winePairing" onChange={this.handleChange} value={this.state.winePairing} />
+                    <Form.Input fluid label="source" placeholder="url" name="source" onChange={this.handleChange} value={this.state.source}/>
                     </Form.Group>
                     <Form.Button>Submit</Form.Button>
                 </Form>
