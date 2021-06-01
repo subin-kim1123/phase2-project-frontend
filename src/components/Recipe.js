@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { Card, Image } from 'semantic-ui-react'
+import { Card, Image, Button, Container } from 'semantic-ui-react'
 import CardBack from './CardBack'
 import CardFront from './CardFront'
+
 
 export default class Recipe extends React.Component{
 
@@ -17,7 +18,6 @@ export default class Recipe extends React.Component{
     })
   }
 
-
   
   delRecipe = (e) => {
     let id = this.props.recipeObj.id
@@ -26,7 +26,7 @@ export default class Recipe extends React.Component{
     })  
     .then(res=>res.json())
     .then(data=>{
-      this.props.deleteRecipe(data)  
+      this.props.deleteRecipe(id)  
     })
   }
   
@@ -36,14 +36,16 @@ export default class Recipe extends React.Component{
         
          <CardBack
          recipeObj={this.props.recipeObj}
-         handleClick={this.handleClick}/>
+         handleClick={this.handleClick}
+         deleteRecipe={this.delRecipe}/>
       )
       }
         else {
           return (
            <CardFront
            recipeObj={this.props.recipeObj}
-           handleClick={this.handleClick}/>
+           handleClick={this.handleClick}
+           deleteRecipe={this.delRecipe}/>
           )
         }
     }

@@ -3,11 +3,13 @@ import RecipeForm from './RecipeForm'
 import RecipesContainer from './RecipesContainer'
 import Header from './Header'
 import Search from './Search'
+import { Button } from 'semantic-ui-react'
 
 export default class cookbook extends Component {
     state={
         recipes: [],
-        searchBar: ''
+        searchBar: '',
+        formView : false,
     }
 
 componentDidMount(){ 
@@ -44,6 +46,12 @@ componentDidMount(){
         })
     }
 
+    toggleForm = () => {
+        this.setState({
+            formView : !this.state.formView
+        })
+    }
+
     render() {
         console.log(this.state)
 
@@ -60,8 +68,10 @@ componentDidMount(){
                 <Search 
                 handleChange={this.handleChange}
                 searchBar={this.state.searchBar}/>
-                <RecipeForm 
-                addRecipeToState={this.addRecipeToState}/>
+                <br />
+                <Button primary onClick={this.toggleForm}>Add your own recipe!</Button>
+                {this.state.formView ? <RecipeForm 
+                addRecipeToState={this.addRecipeToState}/>  : null }
                 <br />
                 <RecipesContainer 
                 recipes={this.state.recipes}
