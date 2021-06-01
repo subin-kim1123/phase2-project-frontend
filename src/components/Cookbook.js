@@ -48,6 +48,10 @@ componentDidMount(){
             <div>
                 <Header/>
                 <br />
+                Search Recipes:
+                <Search 
+                handleChange={this.handleChange}
+                searchBar={this.state.searchBar}/>
                 <RecipeForm />
                 <br />
                 <RecipesContainer 
@@ -56,9 +60,7 @@ componentDidMount(){
                 filterRecipes={filterRecipes}
                 />
                 <br />
-                <Search 
-                handleChange={this.handleChange}
-                searchBar={this.state.searchBar}/>
+                
         
             </div>
         )
