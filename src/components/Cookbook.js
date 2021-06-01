@@ -11,7 +11,7 @@ export default class cookbook extends Component {
     }
 
 componentDidMount(){ 
-    fetch('http://localhost:3000/recipes')
+    fetch(`http://localhost:3000/recipes`)
     .then((response)=> response.json())
     .then((data)=> {
         this.setState({
@@ -37,6 +37,13 @@ componentDidMount(){
         })
       }
 
+
+    addRecipeToState = (newRecipe) => {
+        this.setState({
+            recipes: [...this.state.recipes, newRecipe]
+        })
+    }
+
     render() {
         console.log(this.state)
 
@@ -48,7 +55,12 @@ componentDidMount(){
             <div>
                 <Header/>
                 <br />
-                <RecipeForm />
+                Search Recipes:
+                <Search 
+                handleChange={this.handleChange}
+                searchBar={this.state.searchBar}/>
+                <RecipeForm 
+                addRecipeToState={this.addRecipeToState}/>
                 <br />
                 <RecipesContainer 
                 recipes={this.state.recipes}
@@ -56,9 +68,7 @@ componentDidMount(){
                 filterRecipes={filterRecipes}
                 />
                 <br />
-                <Search 
-                handleChange={this.handleChange}
-                searchBar={this.state.searchBar}/>
+                
         
             </div>
         )

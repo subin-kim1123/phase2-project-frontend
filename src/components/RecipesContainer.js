@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react'
 import Recipe from './Recipe'
 import { Card } from 'semantic-ui-react'
@@ -16,7 +15,7 @@ export default class RecipesContainer extends Component {
                 {arrOfComponents}
             
        
-            </Card.Group>
+        </Card.Group>
          )
     
 }
