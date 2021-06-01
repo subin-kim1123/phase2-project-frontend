@@ -2,21 +2,21 @@ import React, { Component } from 'react'
 import RecipeForm from './RecipeForm'
 import RecipesContainer from './RecipesContainer'
 import Header from './Header'
+import Search from './Search'
 
-export default class Cookbook extends Component {
+export default class cookbook extends Component {
     state={
-        recipes: []
+        recipes: [],
+        searchBar: ''
     }
 
-componentDidMount(){
-   
-    fetch("http://localhost:3000/recipes")
+componentDidMount(){ 
+    fetch('http://localhost:3000/recipes')
     .then((response)=> response.json())
     .then((data)=> {
         this.setState({
-            recipes: data
+            recipes: data}) 
         })
-    })
     .catch(()=>{
         console.log("error")
     })
@@ -31,19 +31,35 @@ componentDidMount(){
         })
     }
 
+    handleChange = (event) => {
+        this.setState({
+          searchBar: event
+        })
+      }
+
     render() {
         console.log(this.state)
 
-        let theArrayOfRecipes = this.state.recipes
+        let filterRecipes = this.state.recipes.filter(recipeObj => {
+            return (recipeObj.title.toLowerCase().includes(this.state.searchBar))
+          })
         
         return (
             <div>
-                <RecipeForm />
                 <Header/>
+                <br />
+                <RecipeForm />
+                <br />
                 <RecipesContainer 
-                recipes={theArrayOfRecipes}
+                recipes={this.state.recipes}
                 deleteRecipe={this.deleteRecipe}
+                filterRecipes={filterRecipes}
                 />
+                <br />
+                <Search 
+                handleChange={this.handleChange}
+                searchBar={this.state.searchBar}/>
+        
             </div>
         )
     }

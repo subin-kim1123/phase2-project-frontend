@@ -3,7 +3,8 @@ import React, { Component } from 'react'
 export default class Recipe extends React.Component{
 
   delRecipe = (e) => {
-    fetch("http://localhost:3000/recipes", {
+    let id = 6
+    fetch(`http://localhost:3000/recipes/${id}`, {
       method: "DELETE",
       headers: {
         "content-type" : "application/json"
@@ -17,32 +18,35 @@ export default class Recipe extends React.Component{
   }
   
     render(){
+      console.log(this.props.recipeObj)
+
+      let { title, readyIn, servings, calories, ingredients, steps, image, blog, winePairing, source} = this.props.recipeObj
       return(
-      <div>
+
+    
         <div className="recipe">
-              <img className="recipe_image" src={this.props.recipeObj.Image} alt={this.props.recipeObj.title}/>
-              <div className="recipe_content">
-                    <h2 className="dish_name">{this.props.recipeObj.title}</h2>
-                    <p className="dish_cookTime">{this.props.recipeObj["ready in"]}</p>
+              <img className="recipe_image" src={image} alt={title}/>
+              <div className="recipe_content"> 
+                    <h2 className="dish_name">{title}</h2>
+                    <p className="dish_recipe">{steps}</p>
                     <div className="dish_ingredients">
-                        <p className="dish_ingredient1">{this.props.recipeObj.Ingredients}</p>
+                        <p className="dish_ingredient1">{ingredients}</p>
                         {/* <p className="dish_ingredient2">{}</p> */}
                     </div>
                     <div className="dish_instructions">
-                        <p className="dish_instruction1">{this.props.recipeObj.steps}</p>
-                        {/* <p className="dish_instruction2">{}</p> */}
+                        <p className="readyIn">Ready In: {readyIn}</p>
+                        <p className="servings"> Servings: {servings}</p>
                     </div>
-                    <p className="dish_calories">{this.props.recipeObj.calories}</p>
-                    <p className="dish_serving">{this.props.recipeObj.servings}</p>
-                    <p className="blog">{this.props.recipeObj.Blog}</p>
-                    <p className="wine-paring">{this.props.recipeObj["wine pairing"]}</p>
-                    <p className="source">{this.props.recipeObj.Source}</p>
+                    <p className="dish_calories">{calories}</p>
+                    <p className="blog">{blog}</p>
+                    <p className="wine-paring">{winePairing}</p>
+                    <p className="source">{source}</p>
               </div>
               <br/>
                     <button>Edit</button>
                     <button onClick={this.delRecipe}>Delete</button>
         </div>
-      </div>
+      
       )
     }
   }
