@@ -4,13 +4,9 @@ import { Container } from 'semantic-ui-react'
 export default class Recipe extends React.Component{
 
   delRecipe = (e) => {
-    let id = 6
+    let id = this.props.recipeObj.id
     fetch(`http://localhost:3000/recipes/${id}`, {
       method: "DELETE",
-      headers: {
-        "content-type" : "application/json"
-      },
-      body: JSON.stringify(this.props.deleteRecipe)
     })  
     .then(res=>res.json())
     .then(data=>{
