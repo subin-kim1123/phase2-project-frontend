@@ -8,32 +8,25 @@ export default class cookbook extends Component {
         recipes: []
     }
 
-   
+     addRecipeToState = (newRecipe) => {
+         let copyOfRecipeArr = [...this.state.recipes, newRecipe]
+         this.setState({
+           recipes: copyOfRecipeArr,
+         })​}
 
-// componentDidMount(){
-//     fetch()
-//     .then(res=>res.json())
-//     .then(recipesArr=>{
-//       this.setState({
-//         pokemon: recipesArr
-//       })
-//     })
-
- 
-
-componentDidMount(){
-   const API_KEY = ''
-    fetch(`https://api.spoonacular.com/recipes/random?apiKey=${API_KEY}&number=10`)
-    .then((response)=> response.json())
-    .then((data)=> {
-        this.setState({
-            recipes: data
+    componentDidMount(){
+    const API_KEY = ''
+        fetch(`https://api.spoonacular.com/recipes/random?apiKey=${API_KEY}&number=10`)
+        .then((response)=> response.json())
+        .then((data)=> {
+            this.setState({
+                recipes: data
+            })
         })
-    })
-    .catch(()=>{
-        console.log("error")
-    })
-}
+        .catch(()=>{
+            console.log("error")
+        })
+    }
   
 
     render() {
@@ -44,8 +37,8 @@ componentDidMount(){
         
         return (
             <div>
-                <RecipeForm />
                 <Header/>
+                <RecipeForm addRecipeToState={this.addRecipeToState}/>
                 <RecipesContainer recipes={theArrayOfRecipes}/>
             </div>
         )
