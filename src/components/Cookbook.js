@@ -11,7 +11,7 @@ export default class cookbook extends Component {
     }
 
 componentDidMount(){ 
-    fetch(`http://localhost:3000/recipes`)
+    fetch("http://localhost:3000/recipes")
     .then((response)=> response.json())
     .then((data)=> {
         this.setState({
@@ -45,7 +45,7 @@ componentDidMount(){
     }
 
     render() {
-        console.log(this.state)
+        // console.log(this.state)
 
         let filterRecipes = this.state.recipes.filter(recipeObj => {
             return (recipeObj.title.toLowerCase().includes(this.state.searchBar))

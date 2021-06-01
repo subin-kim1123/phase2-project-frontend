@@ -58,7 +58,7 @@ export default class RecipeForm extends Component {
 
     
     render() {   
-        console.log(this.state)     
+        // console.log(this.state)     
         return (
             <div>
                 <Form onSubmit = {this.handleSubmit}>

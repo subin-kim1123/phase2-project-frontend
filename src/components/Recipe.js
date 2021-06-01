@@ -10,12 +10,12 @@ export default class Recipe extends React.Component{
     })  
     .then(res=>res.json())
     .then(data=>{
-      this.props.deleteRecipe(data)  
+      this.props.deleteRecipe(id)  
     })
   }
   
     render(){
-      console.log(this.props.recipeObj)
+      // console.log(this.props.recipeObj)
 
       let { title, readyIn, servings, calories, ingredients, steps, image, blog, winePairing, source} = this.props.recipeObj
       return(
