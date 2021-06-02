@@ -6,7 +6,7 @@ export default class RecipesContainer extends Component {
     render() {
         console.log('hi')
         console.log(this.props.recipes)
-        let arrOfComponents = this.props.recipes.map(recipeObj=>{
+        let arrOfComponents = this.props.filterRecipes.map(recipeObj=>{
             return <Recipe key={recipeObj.id} recipeObj={recipeObj} deleteRecipe={this.props.deleteRecipe}/>
         })
         return (
