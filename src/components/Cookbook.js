@@ -5,9 +5,9 @@ import Header from './Header'
 import Search from './Search'
 import { Button } from 'semantic-ui-react'
 import {
-    BrowserRouter as Router,
     Route,
-    Switch
+    Switch,
+    Link
   } from 'react-router-dom';
 
 export default class cookbook extends Component {
@@ -78,6 +78,7 @@ componentDidMount(){
                 {this.state.formView ? <RecipeForm 
                 addRecipeToState={this.addRecipeToState}/>  : null }
                 <br />
+                <Link to='/recipes'>See Recipes</Link>
                 <Switch>
                     <Route
                     path="/recipes"

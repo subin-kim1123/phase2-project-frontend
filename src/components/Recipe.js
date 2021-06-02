@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Card, Image, Button, Container } from 'semantic-ui-react'
 
-import RecipeCardFront from './RecipeCardFront'
+import RecipeCardFront from './RecipesList'
 
 
 export default class Recipe extends React.Component{
