@@ -14,7 +14,6 @@ export default class EditForm extends Component {
         blog : "",
         winePairing : "",
         source : ""
-        
     }
     handleChange = (e) =>{
         this.setState({
@@ -46,19 +45,8 @@ export default class EditForm extends Component {
         })  
         .then(res=>res.json())
         .then(data=>{
+            console.log(data)
           this.props.editRecipe(data)  
-          this.setState({
-                title : "",
-                readyIn : "",
-                servings: "",
-                calories : "",
-                ingredients : "",
-                steps: "",
-                image : "",
-                blog : "",
-                winePairing : "",
-                source : ""
-          })
         })
       }
 
@@ -110,7 +98,8 @@ export default class EditForm extends Component {
                     <Form.Group widths="equal">
                     <Form.Input label="source" placeholder={source} name="source" onChange={this.handleChange} value={this.state.source}/>
                     </Form.Group>
-                    <Form.Button widths="equal" color='blue' >Submit</Form.Button>
+
+                    <Form.Button color='blue' >Submit</Form.Button>
                     <br/>
                 </Form>
                 </Card.Content>

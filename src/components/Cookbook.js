@@ -68,7 +68,7 @@ componentDidMount(){
     }
 
     render() {
-        console.log(this.state)
+        // console.log(this.state)
 
         let filterRecipes = this.state.recipes.filter(recipeObj => {
             return (recipeObj.title.toLowerCase().includes(this.state.searchBar))
