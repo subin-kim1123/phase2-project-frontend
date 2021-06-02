@@ -29,6 +29,8 @@ export default class Recipe extends React.Component{
       this.props.deleteRecipe(id)  
     })
   }
+
+  
   
     render(){
       if (this.state.flipped) {
@@ -37,6 +39,7 @@ export default class Recipe extends React.Component{
          <CardBack
          recipeObj={this.props.recipeObj}
          handleClick={this.handleClick}
+         editRecipe={this.props.editRecipe}
          deleteRecipe={this.delRecipe}/>
       )
       }
@@ -45,6 +48,7 @@ export default class Recipe extends React.Component{
            <CardFront
            recipeObj={this.props.recipeObj}
            handleClick={this.handleClick}
+           editRecipe={this.props.editRecipe}
            deleteRecipe={this.delRecipe}/>
           )
         }
