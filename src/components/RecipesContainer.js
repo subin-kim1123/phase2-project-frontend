@@ -1,19 +1,27 @@
 import React, { Component } from 'react'
-import Recipe from './Recipe'
-import { Card } from 'semantic-ui-react'
+// import Recipe from './Recipe'
+// import { Card } from 'semantic-ui-react'
+import CardDetail from './CardDetail'
+import RecipeCardFront from './RecipeCardFront'
+import {  
+    Switch, 
+    Route
+  } from 'react-router-dom';
 
-export default class RecipesContainer extends Component {
-    render() {
-        console.log('hi')
-        console.log(this.props.recipes)
-        let arrOfComponents = this.props.filterRecipes.map(recipeObj=>{
-            return <Recipe key={recipeObj.id} recipeObj={recipeObj} deleteRecipe={this.props.deleteRecipe}/>
-        })
-        return (
-            <Card.Group itemsPerRow={4}>
-                {arrOfComponents}
-            </Card.Group>
+const RecipesContainer =(props, match) => (   
+            <div>
+                <Switch>
+                    <Route
+                    path={`${match.url}/:recipeId`}
+                    render={routerProps => <RecipeCardFront  {...routerProps} recipes={props.recipes} 
+                    deleteRecipe={props.deleteRecipe}
+                    filterRecipes={props.filterRecipes}/>}
+                    />
+                    <Route path="/recipes">
+                        <CardDetail recipes={props.filterRecipes} />
+                        </Route>
+                </Switch>
+            </div>
          )
-    
-}
-}
+
+export default RecipesContainer

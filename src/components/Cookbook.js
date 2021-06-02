@@ -4,6 +4,11 @@ import RecipesContainer from './RecipesContainer'
 import Header from './Header'
 import Search from './Search'
 import { Button } from 'semantic-ui-react'
+import {
+    BrowserRouter as Router,
+    Route,
+    Switch
+  } from 'react-router-dom';
 
 export default class cookbook extends Component {
     state={
@@ -73,14 +78,15 @@ componentDidMount(){
                 {this.state.formView ? <RecipeForm 
                 addRecipeToState={this.addRecipeToState}/>  : null }
                 <br />
-                <RecipesContainer 
-                recipes={this.state.recipes}
-                deleteRecipe={this.deleteRecipe}
-                filterRecipes={filterRecipes}
+                <Switch>
+                    <Route
+                    path="/recipes"
+                    render={routerProps =><RecipesContainer {...routerProps} 
+                    recipes={this.state.recipes}
+                    deleteRecipe={this.deleteRecipe}
+                    filterRecipes={filterRecipes}/>}
                 />
-                <br />
-                
-        
+                </Switch>
             </div>
         )
     }

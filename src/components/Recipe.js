@@ -1,15 +1,12 @@
 import React, { Component } from 'react'
 import { Card, Image, Button, Container } from 'semantic-ui-react'
-import CardBack from './CardBack'
-import CardFront from './CardFront'
+
+import RecipeCardFront from './RecipeCardFront'
 
 
 export default class Recipe extends React.Component{
 
-  state = {
-    isFlipped: false
-  }
-
+ 
   handleClick = (event) => {
     let newBoolean = ! this.state.flipped
     this.setState({
@@ -29,24 +26,58 @@ export default class Recipe extends React.Component{
       this.props.deleteRecipe(id)  
     })
   }
+
+  // editRecipe = (e) => {
+  //   let id = this.props.recipeObj.id
+  // fetch(`http://localhost:3000/recipes/${id}`, {
+  //   method: "PATCH",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  //   body: JSON.stringify({
+
+  //   }),
+  // })
+  //   .then((r) => r.json())
+  //   .then((articleObj) => console.log(articleObj));
   
+  // }
+
+ 
     render(){
-      if (this.state.flipped) {
-      return(
-        
-         <CardBack
-         recipeObj={this.props.recipeObj}
-         handleClick={this.handleClick}
-         deleteRecipe={this.delRecipe}/>
+      let arrOfComponents = this.props.filterRecipes.map(recipeObj=>{
+        return <RecipeCardFront key={recipeObj.id} recipeObj={recipeObj} deleteRecipe={this.props.deleteRecipe}/>
+      })
+      return (
+        <div>
+          {arrOfComponents}
+        </div>
       )
-      }
-        else {
-          return (
-           <CardFront
-           recipeObj={this.props.recipeObj}
-           handleClick={this.handleClick}
-           deleteRecipe={this.delRecipe}/>
-          )
-        }
-    }
+      
+      
   }
+}
+
+
+//   return(
+
+//     state = {
+//       isFlipped: false
+//     }
+  
+//     if (this.state.flipped) {
+//     <CardBack
+//     recipeObj={this.props.recipeObj}
+//     handleClick={this.handleClick}
+//     deleteRecipe={this.delRecipe}/>
+//  )
+//  }
+//    else {
+//      return (
+//       <CardFront
+//       recipeObj={this.props.recipeObj}
+//       handleClick={this.handleClick}
+//       deleteRecipe={this.delRecipe}/>
+//      )
+//    }
+// 
