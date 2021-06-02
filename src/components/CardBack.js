@@ -1,17 +1,31 @@
 import React, { Component } from 'react'
 import { Card, Button } from 'semantic-ui-react'
-import 'semantic-ui-css/semantic.min.css'
+import EditForm from './EditForm'
 
 export default class CardBack extends Component {
+    state={
+        showingDetail: false
+    }
+
+    handleClick = (event) => {
+        this.setState({
+            showingDetail: !this.state.showingDetail
+    
+        })
+      }
+
     render() {
 
         
         let { title, readyIn, servings, calories, ingredients, steps, blog, winePairing, source} = this.props.recipeObj
         return (
-            <Card onClick={this.props.handleClick}>
+            
+            <Card >
             <Card.Header className="dish_name">{title}</Card.Header>
             
-            <Card.Content>
+            { this.state.showingDetail===true ?
+            
+            <Card.Content >
                       
             <div className="dish_ingredients">
                 <p className="dish_ingredient1">Ingredients: {ingredients.join(", ")}</p>
@@ -28,9 +42,10 @@ export default class CardBack extends Component {
             <p className="winePairing">Wine Pairing: {winePairing}</p>
             <br></br>
             <p className="source">Source: {source}</p>
-            </Card.Content>
-            <Button color='olive'>Edit</Button>
-            <Button color='black' onClick={this.props.deleteRecipe}>Delete</Button>
+            
+            </Card.Content> : <EditForm editRecipe={this.props.editRecipe} recipeObj={this.props.recipeObj}/>}
+            <Button color='grey' >Go Back</Button>
+            {/* <Button color='black' onClick={this.props.deleteRecipe}>Delete</Button> */}
             </Card>
         )
     }
