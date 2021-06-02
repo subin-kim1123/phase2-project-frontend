@@ -1,9 +1,24 @@
 import React, { Component } from 'react'
-import { Container, Button } from 'semantic-ui-react'
-import 'semantic-ui-css/semantic.min.css'
+import { Card, Image, Button, Container } from 'semantic-ui-react'
+import CardBack from './CardBack'
+import CardFront from './CardFront'
+
 
 export default class Recipe extends React.Component{
 
+  state = {
+    isFlipped: false
+  }
+
+  handleClick = (event) => {
+    let newBoolean = ! this.state.flipped
+    this.setState({
+      flipped: newBoolean
+
+    })
+  }
+
+  
   delRecipe = (e) => {
     let id = this.props.recipeObj.id
     fetch(`http://localhost:3000/recipes/${id}`, {
@@ -14,38 +29,28 @@ export default class Recipe extends React.Component{
       this.props.deleteRecipe(id)  
     })
   }
+
+  
   
     render(){
-      // console.log(this.props.recipeObj)
-
-      let { title, readyIn, servings, calories, ingredients, steps, image, blog, winePairing, source} = this.props.recipeObj
+      if (this.state.flipped) {
       return(
-
-        <Container>
-        <div className="recipe">
-              <img className="recipe_image" src={image} alt={title}/>
-              <div className="recipe_content"> 
-                    <h2 className="dish_name">{title}</h2>
-                    <p className="dish_recipe">{steps}</p>
-                    <div className="dish_ingredients">
-                        <p className="dish_ingredient1">{ingredients}</p>
-                        {/* <p className="dish_ingredient2">{}</p> */}
-                    </div>
-                    <div className="dish_instructions">
-                        <p className="readyIn">Ready In: {readyIn}</p>
-                        <p className="servings"> Servings: {servings}</p>
-                    </div>
-                    <p className="dish_calories">{calories}</p>
-                    <p className="blog">{blog}</p>
-                    <p className="wine-paring">{winePairing}</p>
-                    <p className="source">{source}</p>
-              </div>
-              <br/>
-                
-                    <Button color='olive'>Edit</Button>
-                    <Button color='black' onClick={this.delRecipe}>Delete</Button>
-        </div>
-        </Container>
+        
+         <CardBack
+         recipeObj={this.props.recipeObj}
+         handleClick={this.handleClick}
+         editRecipe={this.props.editRecipe}
+         deleteRecipe={this.delRecipe}/>
       )
+      }
+        else {
+          return (
+           <CardFront
+           recipeObj={this.props.recipeObj}
+           handleClick={this.handleClick}
+           editRecipe={this.props.editRecipe}
+           deleteRecipe={this.delRecipe}/>
+          )
+        }
     }
   }

@@ -4,17 +4,15 @@ import { Card } from 'semantic-ui-react'
 
 export default class RecipesContainer extends Component {
     render() {
-        // console.log(this.props.recipes)
+        console.log('hi')
+        console.log(this.props.recipes)
         let arrOfComponents = this.props.recipes.map(recipeObj=>{
-            return <Recipe key={recipeObj.id} recipeObj={recipeObj} deleteRecipe={this.props.deleteRecipe}/>
+            return <Recipe key={recipeObj.id} recipeObj={recipeObj} deleteRecipe={this.props.deleteRecipe} editRecipe={this.props.editRecipe}/>
         })
         return (
-            <Card.Group itemsPerRow={6}>
-            <h1>Hello from my recipes </h1>
+            <Card.Group itemsPerRow={4}>
                 {arrOfComponents}
-            
-       
-        </Card.Group>
+            </Card.Group>
          )
     
 }

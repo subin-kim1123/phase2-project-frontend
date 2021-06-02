@@ -6,8 +6,8 @@ export default class RecipeForm extends Component {
         readyIn : "",
         servings: "",
         calories : "",
-        ingredients : [],
-        steps: [],
+        ingredients : "",
+        steps: "",
         image : "",
         blog : "",
         winePairing : "",
@@ -22,10 +22,11 @@ export default class RecipeForm extends Component {
         e.preventDefault()
         let newFormattedObj ={
             title : this.state.title,
-            readyIn : this.state.readyIn,
-            calories: this.state.calories,
-            ingredients: this.state.ingredients.split(', '),
-            steps : this.state.steps.split(', '),
+            readyIn : parseInt(this.state.readyIn),
+            servings : parseInt(this.state.servings),
+            calories: parseInt(this.state.calories),
+            ingredients: this.state.ingredients.split(','),
+            steps : this.state.steps.split(','),
             image : [this.state.image],
             blog : this.state.blog,
             winePairing : this.state.winePairing,
@@ -41,30 +42,29 @@ export default class RecipeForm extends Component {
             .then((res) => res.json())
             .then((postedRecipeObj) => {
             this.props.addRecipeToState(postedRecipeObj)
-                // this.setState({
-                //     title : "",
-                //     readyIn : "",
-                //     servings: "",
-                //     calories : "",
-                //     ingredients : [],
-                //     steps: [],
-                //     image : "",
-                //     blog : "",
-                //     winePairing : "",
-                //     source : ""
-                // })
+                this.setState({
+                    title : "",
+                    readyIn : "",
+                    servings: "",
+                    calories : "",
+                    ingredients : "",
+                    steps: "",
+                    image : "",
+                    blog : "",
+                    winePairing : "",
+                    source : ""
+                })
             });
     }
-
-    
     render() {   
-        // console.log(this.state)     
+        console.log(this.state)     
         return (
             <div>
                 <Form onSubmit = {this.handleSubmit}>
                     <Form.Group widths="equal">
                     <Form.Input fluid label="title" placeholder="title" name="title" onChange={this.handleChange} value={this.state.title}/>
                     <Form.Input fluid label="readyIn" placeholder="readyIn" name="readyIn" onChange={this.handleChange} value={this.state.readyIn} />
+                    <Form.Input fluid label="servings" placeholder="Servings" name="servings" onChange={this.handleChange} value={this.state.servings} />
                     <Form.Input fluid label="calories" placeholder="calories" name="calories" onChange={this.handleChange} value={this.state.calories} />
                     <Form.Input fluid label="ingredients" placeholder="ingredients (separate with commas)" name="ingredients" onChange={this.handleChange} value={this.state.ingredients} />
                     <Form.Input fluid label="steps" placeholder="steps (separate with commas)" name="steps" onChange={this.handleChange} value={this.state.steps} />
@@ -73,7 +73,7 @@ export default class RecipeForm extends Component {
                     <Form.Input fluid label="winePairing" placeholder="winePairing" name="winePairing" onChange={this.handleChange} value={this.state.winePairing} />
                     <Form.Input fluid label="source" placeholder="url" name="source" onChange={this.handleChange} value={this.state.source}/>
                     </Form.Group>
-                    <Form.Button>Submit</Form.Button>
+                    <Form.Button >Submit</Form.Button>
                 </Form>
             </div>
         )
