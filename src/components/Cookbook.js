@@ -1,9 +1,15 @@
+
 import React, { Component } from 'react'
 import RecipeForm from './RecipeForm'
 import RecipesContainer from './RecipesContainer'
 import Header from './Header'
 import Search from './Search'
 import { Button } from 'semantic-ui-react'
+
+import {  
+    Switch, 
+    Route
+  } from 'react-router-dom';
 
 export default class cookbook extends Component {
     state={
@@ -33,6 +39,16 @@ componentDidMount(){
         })
     }
 
+    editRecipe = (updatedRecipe) => {
+        let newRecipe = this.state.recipes.map((recipeObj)=>{
+            if(recipeObj.id === updatedRecipe.id){
+                return updatedRecipe
+            } else {
+                return recipeObj
+            }
+        })
+    }
+
     handleChange = (event) => {
         this.setState({
           searchBar: event
@@ -53,7 +69,7 @@ componentDidMount(){
     }
 
     render() {
-        console.log(this.state)
+        // console.log(this.state)
 
         let filterRecipes = this.state.recipes.filter(recipeObj => {
             return (recipeObj.title.toLowerCase().includes(this.state.searchBar))
@@ -70,12 +86,14 @@ componentDidMount(){
                 searchBar={this.state.searchBar}/>
                 <br />
                 <Button primary onClick={this.toggleForm}>Add your own recipe!</Button>
+                <br/>
                 {this.state.formView ? <RecipeForm 
                 addRecipeToState={this.addRecipeToState}/>  : null }
                 <br />
                 <RecipesContainer 
                 recipes={this.state.recipes}
                 deleteRecipe={this.deleteRecipe}
+                editRecipe={this.editRecipe}
                 filterRecipes={filterRecipes}
                 />
                 <br />
