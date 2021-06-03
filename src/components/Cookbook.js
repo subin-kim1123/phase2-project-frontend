@@ -12,6 +12,7 @@ export default class cookbook extends Component {
         recipes: [],
         searchBar: '',
         formView : false,
+        editButton: false,
     }
 
 componentDidMount(){ 
@@ -36,6 +37,14 @@ editRecipe = (updatedRecipe) => {
         }
     })
 }
+
+toggleEdit = () => {
+    let newBoolean = ! this.state.editButton
+    this.setState({
+        editButton : newBoolean
+    })
+}
+
   
     deleteRecipe = (deleteID) => {
         let newArr = this.state.recipes.filter(recipeObj => {
@@ -46,15 +55,6 @@ editRecipe = (updatedRecipe) => {
         })
     }
 
-    editRecipe = (updatedRecipe) => {
-        let newRecipe = this.state.recipes.map((recipeObj)=>{
-            if(recipeObj.id === updatedRecipe.id){
-                return updatedRecipe
-            } else {
-                return recipeObj
-            }
-        })
-    }
 
     handleChange = (event) => {
         this.setState({
@@ -76,7 +76,7 @@ editRecipe = (updatedRecipe) => {
     }
 
     render() {
-        // console.log(this.state)
+        console.log(this.state)
 
         let filterRecipes = this.state.recipes.filter(recipeObj => {
             return (recipeObj.title.toLowerCase().includes(this.state.searchBar))
@@ -103,6 +103,7 @@ editRecipe = (updatedRecipe) => {
                 editRecipe={this.editRecipe}
                 filterRecipes={filterRecipes}
                 editRecipe={this.editRecipe}
+                toggleEdit={this.toggleEdit}
                 />
                 <br />
                 

@@ -7,7 +7,8 @@ import CardFront from './CardFront'
 export default class Recipe extends React.Component{
 
   state = {
-    isFlipped: false
+    isFlipped: false,
+    editButton: false
   }
 
   handleClick = (event) => {
@@ -17,6 +18,13 @@ export default class Recipe extends React.Component{
 
     })
   }
+
+  toggleEdit = (event) => {
+    let newBoolean = ! this.state.editButton
+    this.setState({
+        editButton : newBoolean
+    })
+}
 
   
   delRecipe = (e) => {
@@ -33,6 +41,7 @@ export default class Recipe extends React.Component{
   
   
     render(){
+      console.log(this.state)
       if (this.state.flipped) {
       return(
         
@@ -40,7 +49,9 @@ export default class Recipe extends React.Component{
          recipeObj={this.props.recipeObj}
          handleClick={this.handleClick}
          deleteRecipe={this.delRecipe}
-         editRecipe={this.props.editRecipe}/>
+         editRecipe={this.props.editRecipe}
+         toggleEdit={this.toggleEdit}
+         editButton={this.state.editButton}/>
       )
       }
         else {
@@ -49,7 +60,9 @@ export default class Recipe extends React.Component{
            recipeObj={this.props.recipeObj}
            handleClick={this.handleClick}
            deleteRecipe={this.delRecipe}
-           editRecipe={this.props.editRecipe}/>
+           editRecipe={this.props.editRecipe}
+           toggleEdit={this.toggleEdit}
+           editButton={this.state.editButton}/>
           )
         }
     }

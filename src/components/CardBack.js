@@ -1,17 +1,33 @@
 import React, { Component } from 'react'
 import { Card, Button } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
+import EditForm from './EditForm'
+
 
 export default class CardBack extends Component {
+ 
+
+    toggleEdit = () => {
+        let newBoolean = ! this.state.editButton
+        this.setState({
+            editButton : newBoolean
+        })
+    }
     render() {
 
+
+        // <Button primary onClick={this.toggleForm}>Add your own recipe!</Button>
+        //         <br/>
+        //         {this.state.formView ? <RecipeForm 
+        //         addRecipeToState={this.addRecipeToState}/>  : null }
+        //         <br />
         
         let { title, readyIn, servings, calories, ingredients, steps, blog, winePairing, source} = this.props.recipeObj
         return (
-            <Card onClick={this.props.handleClick}>
+            <Card >
             <Card.Header className="dish_name">{title}</Card.Header>
             
-            <Card.Content>
+            <Card.Content onClick={this.props.handleClick}>
                       
             <div className="dish_ingredients">
                 <p className="dish_ingredient1">Ingredients: {ingredients.join(", ")}</p>
@@ -29,7 +45,10 @@ export default class CardBack extends Component {
             <br></br>
             <p className="source">Source: {source}</p>
             </Card.Content>
-            <Button color='olive' onClick={this.props.editRecipe}>Edit</Button>
+            <Button color='olive' onClick={this.props.toggleEdit}>Edit</Button>
+            {this.props.editButton ? <EditForm 
+                editRecipe={this.props.editRecipe}
+                recipeObj={this.props.recipeObj}/>  : null }
             <Button color='black' onClick={this.props.deleteRecipe}>Delete</Button>
             </Card>
         )
