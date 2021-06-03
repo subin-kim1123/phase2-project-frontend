@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import RecipeForm from './RecipeForm'
 import RecipesContainer from './RecipesContainer'
-import Header from './Header'
+import Headline from './Headline'
 import Search from './Search'
 import { Button } from 'semantic-ui-react'
 
@@ -21,6 +21,17 @@ componentDidMount(){
         })
     .catch(()=>{
         console.log("error")
+    })
+}
+
+//update state of recipes using spread operator and newRecipe
+editRecipe = (updatedRecipe) => {
+    let newRecipe = this.state.recipes.map((recipeObj)=>{
+        if(recipeObj.id === updatedRecipe.id){
+            return updatedRecipe
+        } else {
+            return recipeObj
+        }
     })
 }
   
@@ -61,7 +72,7 @@ componentDidMount(){
         
         return (
             <div>
-                <Header
+                <Headline
                 addRecipeToState={this.addRecipeToState}/>
                 <br />
                 Search Recipes:
@@ -77,6 +88,7 @@ componentDidMount(){
                 recipes={this.state.recipes}
                 deleteRecipe={this.deleteRecipe}
                 filterRecipes={filterRecipes}
+                editRecipe={this.editRecipe}
                 />
                 <br />
                 

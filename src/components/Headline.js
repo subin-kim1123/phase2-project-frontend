@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
+import { Header } from 'semantic-ui-react'
 
-export default class Header extends React.Component{
+export default class Headline extends React.Component{
 
 
    
@@ -25,7 +26,7 @@ export default class Header extends React.Component{
     render(){
       return(
         <div>
-      <h1>The Joy Of Cooking Bart Simpson</h1>
+      <Header as='h1' size='huge'>Mega Bites</Header>
       <button onClick={this.addRandomRecipe}>Add New Random Recipe!</button>
       </div>
       )

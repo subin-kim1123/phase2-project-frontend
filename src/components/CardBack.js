@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Card, Button } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
+import EditForm from './EditForm'
 
 export default class CardBack extends Component {
     render() {
@@ -29,7 +30,7 @@ export default class CardBack extends Component {
             <br></br>
             <p className="source">Source: {source}</p>
             </Card.Content>
-            <Button color='olive'>Edit</Button>
+            <Button color='olive' onClick={this.props.editRecipe}>Edit</Button>
             <Button color='black' onClick={this.props.deleteRecipe}>Delete</Button>
             </Card>
         )

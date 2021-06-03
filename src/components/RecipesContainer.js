@@ -7,7 +7,10 @@ export default class RecipesContainer extends Component {
         console.log('hi')
         console.log(this.props.recipes)
         let arrOfComponents = this.props.filterRecipes.map(recipeObj=>{
-            return <Recipe key={recipeObj.id} recipeObj={recipeObj} deleteRecipe={this.props.deleteRecipe}/>
+            return <Recipe key={recipeObj.id} 
+            recipeObj={recipeObj} 
+            deleteRecipe={this.props.deleteRecipe}
+            editRecipe={this.props.editRecipe}/>
         })
         return (
             <Card.Group itemsPerRow={4}>
