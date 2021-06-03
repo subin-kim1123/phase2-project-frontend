@@ -6,16 +6,32 @@ import EditForm from './EditForm'
 
 export default class CardFront extends Component {
 
-   
+    state = {
+        likes: 0
+      }
 
-    
+      addLike = () => {
+        this.setState({
+          likes: this.state.likes + 1
+        })
+      }
     
     render() {
         // console.log(this.state)
         let { title, image } = this.props.recipeObj
         return (
             <Card >
-            <Card.Header className="dish_name">{title}</Card.Header>
+            <Card.Header className="dish_name" fontSize={20}>{title} </Card.Header>
+            <br></br>
+            <div className="ui labeled button" tabIndex="0" style={{flex:1,justifyContent: "center",alignItems: "center"}}>
+          <div className="ui red button" onClick={this.addLike}>
+            <i className="heart icon"></i> Add Likes
+          </div>
+          <a className="ui basic red left pointing label">
+            {this.state.likes}
+          </a>
+          </div>
+          <br></br>
             <Image className="recipe_image" onClick={this.props.handleClick} src={image} alt={title} wrapped ui={false}/>
             <Button color='olive' onClick={this.props.toggleEdit}>Edit</Button>
             {this.props.editButton ? <EditForm 

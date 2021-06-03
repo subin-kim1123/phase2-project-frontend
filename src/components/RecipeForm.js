@@ -54,6 +54,7 @@ export default class RecipeForm extends Component {
                     winePairing : "",
                     source : ""
                 })
+                window.location.reload()
             });
     }
     render() {   

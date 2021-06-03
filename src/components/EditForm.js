@@ -46,8 +46,10 @@ export default class EditForm extends Component {
         .then(res=>res.json())
         .then(data=>{
             console.log(data)
-          this.props.editRecipe(data)  
+          this.props.editRecipe(data) 
+          window.location.reload() 
         })
+        
       }
 
 

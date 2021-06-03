@@ -10,7 +10,7 @@ export default class Headline extends React.Component{
  
   fetch(`https://api.spoonacular.com/recipes/random?apiKey=${API_KEY}&number=1`)
   .then((r) => r.json())
-  .then((recipeObj) => this.props.addRecipeToState({
+  .then((recipeObj) =>  this.props.addRecipeToState({
     title : recipeObj.recipes[0].title,
     readyIn : recipeObj.recipes[0].readyInMinutes,
     servings: recipeObj.recipes[0].servings,
@@ -34,3 +34,4 @@ export default class Headline extends React.Component{
   
   }
   
+ 
