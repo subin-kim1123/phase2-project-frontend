@@ -3,18 +3,23 @@ import { Card, Image, Button } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 import EditForm from './EditForm'
 
-let styles={color: 'black', fontsize: '30px'}
+
 export default class CardFront extends Component {
 
-    state = {
-        likes: 0
-      }
-
       addLike = () => {
-        this.setState({
-          likes: this.state.likes + 1
-        })
-      }
+          this.props.recipeObj.likes +=1
+          let data = {likes: this.props.recipeObj.likes}
+    fetch(`http://localhost:3000/recipes/${this.props.recipeObj.id}`, {
+      method: "PATCH",
+      headers: {
+      "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+      })
+      .then((r) => r.json())
+      .then((recipeObj) => this.props.updateLikesOnState(recipeObj));
+  }
+
     
     render() {
         // console.log(this.state)
@@ -33,7 +38,7 @@ export default class CardFront extends Component {
             <i className="heart icon"></i> Add Likes
           </div>
           <a className="ui basic red left pointing label">
-            {this.state.likes}
+            {this.props.recipeObj.likes}
           </a>
           </div>
           <br></br>

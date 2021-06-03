@@ -62,7 +62,8 @@ export default class Recipe extends React.Component{
            deleteRecipe={this.delRecipe}
            editRecipe={this.props.editRecipe}
            toggleEdit={this.toggleEdit}
-           editButton={this.state.editButton}/>
+           editButton={this.state.editButton}
+           updateLikesOnState={this.props.updateLikesOnState}/>
           )
         }
     }

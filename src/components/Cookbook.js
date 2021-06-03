@@ -12,7 +12,6 @@ export default class cookbook extends Component {
         recipes: [],
         searchBar: '',
         formView : false,
-        editButton: false,
     }
 
 componentDidMount(){ 
@@ -38,12 +37,18 @@ editRecipe = (updatedRecipe) => {
     })
 }
 
-toggleEdit = () => {
-    let newBoolean = ! this.state.editButton
-    this.setState({
-        editButton : newBoolean
+updateLikesOnState =(updatedObj) =>{
+    let copyOfQuotes = this.state.recipes.map((quoteObj) =>{
+      if(quoteObj.id === updatedObj.id){
+         return updatedObj
+      } else {
+      return quoteObj
+      }
     })
-}
+    this.setState({
+    quotes: copyOfQuotes
+    })
+  }
 
   
     deleteRecipe = (deleteID) => {
@@ -100,10 +105,10 @@ toggleEdit = () => {
                 <RecipesContainer 
                 recipes={this.state.recipes}
                 deleteRecipe={this.deleteRecipe}
-                editRecipe={this.editRecipe}
                 filterRecipes={filterRecipes}
                 editRecipe={this.editRecipe}
-                toggleEdit={this.toggleEdit}
+                updateLikesOnState={this.updateLikesOnState}
+                
                 />
                 <br />
                 
