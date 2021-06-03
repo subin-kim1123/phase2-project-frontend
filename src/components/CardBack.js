@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Card, Button } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
-import EditForm from './EditForm'
 
 export default class CardBack extends Component {
     render() {

@@ -29,6 +29,8 @@ export default class Recipe extends React.Component{
       this.props.deleteRecipe(id)  
     })
   }
+
+  
   
     render(){
       if (this.state.flipped) {

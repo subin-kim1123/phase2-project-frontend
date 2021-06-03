@@ -6,8 +6,6 @@ import 'semantic-ui-css/semantic.min.css'
 export default class CardFront extends Component {
 
     
-
-    
     render() {
         let { title, image } = this.props.recipeObj
         return (

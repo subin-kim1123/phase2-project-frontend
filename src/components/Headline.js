@@ -34,7 +34,3 @@ export default class Headline extends React.Component{
   
   }
   
-
-    
- 
-  
