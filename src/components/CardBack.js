@@ -25,7 +25,7 @@ export default class CardBack extends Component {
         let { title, readyIn, servings, calories, ingredients, steps, blog, winePairing, source} = this.props.recipeObj
         return (
             <Card >
-            <Card.Header className="dish_name">{title}</Card.Header>
+            <Card.Header className="dish_name" as='h3' size='huge'>{title}</Card.Header>
             
             <Card.Content onClick={this.props.handleClick}>
                       

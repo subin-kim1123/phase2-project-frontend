@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Header } from 'semantic-ui-react'
+import { Header, Button } from 'semantic-ui-react'
 
 export default class Headline extends React.Component{
 
@@ -27,7 +27,9 @@ export default class Headline extends React.Component{
       return(
         <div>
       <Header as='h1' size='huge'>Mega Bites</Header>
-      <button onClick={this.addRandomRecipe}>Add New Random Recipe!</button>
+      <Button primary
+      
+      onClick={this.addRandomRecipe}>Recipe Roulette!</Button>
       </div>
       )
     }
