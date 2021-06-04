@@ -6,7 +6,7 @@ export default class Headline extends React.Component{
 
    
   addRandomRecipe = (event) => {
-    const API_KEY = 
+    const API_KEY = 'c1f88f801b7843d3b41f2f0df1cd4538'
  
   fetch(`https://api.spoonacular.com/recipes/random?apiKey=${API_KEY}&number=1`)
   .then((r) => r.json())
@@ -19,7 +19,8 @@ export default class Headline extends React.Component{
     steps : recipeObj.recipes[0].analyzedInstructions[0].steps.map(obj => obj.step),
     image : recipeObj.recipes[0].image,
     blog : recipeObj.recipes[0].summary,
-    source : recipeObj.recipes[0].source
+    source : recipeObj.recipes[0].source,
+    likes : 0
     }))
 }
 

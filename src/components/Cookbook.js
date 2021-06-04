@@ -72,6 +72,16 @@ updateLikesOnState =(updatedObj) =>{
         this.setState({
             recipes: [...this.state.recipes, newRecipe]
         })
+        fetch("http://localhost:3000/recipes", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newRecipe),
+        })
+        .then((r) => r.json())
+        .then((recipeObj) => console.log(recipeObj));
+
     }
 
     toggleForm = () => {
