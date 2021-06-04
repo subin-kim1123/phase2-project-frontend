@@ -11,7 +11,8 @@ export default class RecipeForm extends Component {
         image : "",
         blog : "",
         winePairing : "",
-        source : ""
+        source : "",
+        likes: 0
     }
     handleChange = (e) =>{
         this.setState({
@@ -30,7 +31,8 @@ export default class RecipeForm extends Component {
             image : [this.state.image],
             blog : this.state.blog,
             winePairing : this.state.winePairing,
-            source : this.state.Source
+            source : this.state.Source,
+            likes: this.state.likes
         }
         fetch("http://localhost:3000/recipes", {
                 method: "POST",
@@ -52,7 +54,8 @@ export default class RecipeForm extends Component {
                     image : "",
                     blog : "",
                     winePairing : "",
-                    source : ""
+                    source : "",
+                    likes : 0
                 })
                 window.location.reload()
             });
