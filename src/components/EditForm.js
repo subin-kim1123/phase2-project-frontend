@@ -4,16 +4,16 @@ import { Card, Button, Form } from 'semantic-ui-react'
 
 export default class EditForm extends Component {
     state={
-        title : "",
-        readyIn : "",
-        servings: "",
-        calories : "",
-        ingredients : "",
-        steps: "",
-        image : "",
-        blog : "",
-        winePairing : "",
-        source : ""
+        title : this.props.recipeObj.title,
+        readyIn : this.props.recipeObj.readyIn,
+        servings: this.props.recipeObj.servings,
+        calories : this.props.recipeObj.calories,
+        ingredients : this.props.recipeObj.ingredients,
+        steps: this.props.recipeObj.steps,
+        image : this.props.recipeObj.image,
+        blog : this.props.recipeObj.blog,
+        winePairing : this.props.recipeObj.winePairing,
+        source : this.props.recipeObj.source
     }
     handleChange = (e) =>{
         this.setState({

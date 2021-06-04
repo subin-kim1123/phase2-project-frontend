@@ -19,7 +19,8 @@ export default class Headline extends React.Component{
     steps : recipeObj.recipes[0].analyzedInstructions[0].steps.map(obj => obj.step),
     image : recipeObj.recipes[0].image,
     blog : recipeObj.recipes[0].summary,
-    source : recipeObj.recipes[0].source
+    source : recipeObj.recipes[0].source,
+    likes: 0
     }))
 }
 
