@@ -29,8 +29,8 @@ export default class EditForm extends Component {
             readyIn : parseInt(this.state.readyIn),
             servings : parseInt(this.state.servings),
             calories: parseInt(this.state.calories),
-            ingredients: this.state.ingredients.split(','),
-            steps : this.state.steps.split(','),
+            ingredients: this.state.ingredients,
+            steps : this.state.steps,
             image : [this.state.image],
             blog : this.state.blog,
             winePairing : this.state.winePairing,
@@ -57,6 +57,7 @@ export default class EditForm extends Component {
 
     render() {
 
+        console.log(this.state)
         
         let { title, readyIn, servings, calories, ingredients, steps, blog, image, winePairing, source} = this.props.recipeObj
         return (
