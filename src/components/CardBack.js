@@ -27,7 +27,8 @@ export default class CardBack extends Component {
             <Card >
             <Card.Header className="dish_name" as='h3' size='huge'>{title}</Card.Header>
             
-            <Card.Content onClick={this.props.handleClick}>
+            <Card.Content onClick={this.props.handleClick}
+            style={{whiteSpace: 'pre-wrap', overflowWrap: 'break-word'}}>
                       
             <div className="dish_ingredients">
                 <p className="dish_ingredient1">Ingredients: {ingredients.join(", ")}</p>
