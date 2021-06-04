@@ -28,7 +28,7 @@ export default class Headline extends React.Component{
       return(
         <div>
       <Header as='h1' size='huge'>Mega Bites</Header>
-      <Button primary
+      <Button color='teal'
       
       onClick={this.addRandomRecipe}>Recipe Roulette!</Button>
       </div>
