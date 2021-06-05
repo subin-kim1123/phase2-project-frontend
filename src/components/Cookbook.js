@@ -50,7 +50,6 @@ updateLikesOnState =(updatedObj) =>{
     })
   }
 
-  
     deleteRecipe = (deleteID) => {
         let newArr = this.state.recipes.filter(recipeObj => {
             return recipeObj.id !== deleteID
@@ -60,13 +59,11 @@ updateLikesOnState =(updatedObj) =>{
         })
     }
 
-
     handleChange = (event) => {
         this.setState({
           searchBar: event
         })
       }
-
 
     addRecipeToState = (newRecipe) => {
         this.setState({
@@ -81,7 +78,6 @@ updateLikesOnState =(updatedObj) =>{
         })
         .then((r) => r.json())
         .then((recipeObj) => console.log(recipeObj));
-
     }
 
     toggleForm = () => {
@@ -118,7 +114,6 @@ updateLikesOnState =(updatedObj) =>{
                 filterRecipes={filterRecipes}
                 editRecipe={this.editRecipe}
                 updateLikesOnState={this.updateLikesOnState}
-                
                 />
                 <br />
                 

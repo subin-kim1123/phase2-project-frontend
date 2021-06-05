@@ -31,7 +31,7 @@ export default class CardBack extends Component {
             style={{whiteSpace: 'pre-wrap', overflowWrap: 'break-word'}}>
                       
             <div className="dish_ingredients">
-                <p className="dish_ingredient1">Ingredients: {ingredients}</p>
+                <p className="dish_ingredient1">Ingredients: {ingredients.join(', ')}</p>
             </div>
             <div className="dish_instructions">
                 <br></br>
@@ -41,7 +41,7 @@ export default class CardBack extends Component {
             </div>
             <p className="dish_calories">Calories: {calories}</p>
             <p className="blog">{blog}</p>
-            <p className="instructions">Instructions: {steps}</p>
+            <p className="instructions">Instructions: {steps.join(', ')}</p>
             <p className="winePairing">Wine Pairing: {winePairing}</p>
             <br></br>
             <p className="source">Source: {source}</p>
