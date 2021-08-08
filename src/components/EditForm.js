@@ -38,7 +38,7 @@ export default class EditForm extends Component {
       likes: this.state.likes,
     };
     let id = this.props.recipeObj.id;
-    fetch(`http://localhost:3000/recipes/${id}`, {
+    fetch(`https://mega-bytes-backend.herokuapp.com/recipes/${id}`, {
       method: "PATCH",
       headers: {
         "Content-type": "application/json",

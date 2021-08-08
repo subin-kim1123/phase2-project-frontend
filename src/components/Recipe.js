@@ -29,7 +29,7 @@ export default class Recipe extends React.Component{
   
   delRecipe = (e) => {
     let id = this.props.recipeObj.id
-    fetch(`http://localhost:3000/recipes/${id}`, {
+    fetch(`https://mega-bytes-backend.herokuapp.com/recipes/${id}`, {
       method: "DELETE",
     })  
     .then(res=>res.json())

@@ -9,7 +9,7 @@ export default class CardFront extends Component {
       addLike = () => {
           this.props.recipeObj.likes +=1
           let data = {likes: this.props.recipeObj.likes}
-    fetch(`http://localhost:3000/recipes/${this.props.recipeObj.id}`, {
+    fetch(`https://mega-bytes-backend.herokuapp.com/recipes/${this.props.recipeObj.id}`, {
       method: "PATCH",
       headers: {
       "Content-Type": "application/json",

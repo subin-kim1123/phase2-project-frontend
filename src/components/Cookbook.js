@@ -15,7 +15,7 @@ export default class cookbook extends Component {
     }
 
 componentDidMount(){ 
-    fetch(`http://localhost:3000/recipes`)
+    fetch(`https://mega-bytes-backend.herokuapp.com/recipes`)
     .then((response)=> response.json())
     .then((data)=> {
         this.setState({
@@ -69,7 +69,7 @@ updateLikesOnState =(updatedObj) =>{
         this.setState({
             recipes: [...this.state.recipes, newRecipe]
         })
-        fetch("http://localhost:3000/recipes", {
+        fetch("https://mega-bytes-backend.herokuapp.com/recipes", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

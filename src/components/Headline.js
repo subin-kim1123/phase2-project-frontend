@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import { Header, Button } from 'semantic-ui-react'
 
+const API_KEY = process.env.REACT_APP_API_KEY
+
 export default class Headline extends React.Component{
 
-
+ 
    
   addRandomRecipe = (event) => {
-    const API_KEY = 
+    
  
   fetch(`https://api.spoonacular.com/recipes/random?apiKey=${API_KEY}&number=1`)
   .then((r) => r.json())

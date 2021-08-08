@@ -34,7 +34,7 @@ export default class RecipeForm extends Component {
             source : this.state.Source,
             likes : 0
         }
-        fetch("http://localhost:3000/recipes", {
+        fetch("https://mega-bytes-backend.herokuapp.com/recipes", {
                 method: "POST",
                 headers: {
                 "Content-Type": "application/json",
